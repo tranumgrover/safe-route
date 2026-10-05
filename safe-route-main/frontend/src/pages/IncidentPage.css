@@ -1,0 +1,375 @@
+/* ── INCIDENTS PAGE ── */
+.inc-page { background: #0b0d14; min-height: calc(100vh - 60px); }
+
+.inc-heading {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 22px; margin-bottom: 4px;
+}
+
+.inc-report-btn {
+  display: flex; align-items: center; gap: 7px;
+  background: linear-gradient(135deg,#e8614d,#c0392b);
+  border: none; border-radius: 9px; padding: 10px 18px;
+  color: #fff; font-size: 13px; font-weight: 600;
+  cursor: pointer; font-family: inherit;
+  box-shadow: 0 4px 16px rgba(232,97,77,.3);
+  transition: transform .15s, box-shadow .15s;
+}
+.inc-report-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 22px rgba(232,97,77,.45); }
+
+/* ── FORM CARD ── */
+.inc-form-card {
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 14px; padding: 20px;
+  margin-bottom: 24px;
+  animation: incSlideDown .25s cubic-bezier(.16,1,.3,1);
+}
+@keyframes incSlideDown { from{opacity:0;transform:translateY(-10px)} to{opacity:1;transform:translateY(0)} }
+
+.inc-form-title {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 14px; font-weight: 600; color: #e8eaf0;
+  margin-bottom: 18px;
+}
+
+.inc-form { display: flex; flex-direction: column; gap: 16px; }
+
+/* Location input */
+.inc-loc-wrap { position: relative; }
+
+.inc-loc-row {
+  display: flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: 9px; padding: 10px 12px;
+  transition: border-color .2s;
+}
+.inc-loc-row:focus-within { border-color: rgba(232,97,77,.5); }
+
+.inc-loc-pin { color: #e8614d; flex-shrink: 0; }
+
+.inc-loc-input {
+  flex: 1; background: transparent; border: none; outline: none;
+  font-size: 13px; color: #e8eaf0; font-family: inherit;
+}
+.inc-loc-input::placeholder { color: rgba(255,255,255,.25); }
+
+.inc-spinner {
+  width: 12px; height: 12px;
+  border: 1.5px solid rgba(255,255,255,.15);
+  border-top-color: #e8614d; border-radius: 50%;
+  animation: incSpin .6s linear infinite; flex-shrink: 0;
+}
+@keyframes incSpin { to { transform: rotate(360deg); } }
+
+.inc-clear {
+  background: transparent; border: none;
+  color: rgba(255,255,255,.3); cursor: pointer;
+  padding: 2px; display: flex; align-items: center; border-radius: 4px;
+}
+.inc-clear:hover { color: rgba(255,255,255,.7); }
+
+.inc-dropdown {
+  position: absolute; top: calc(100% + 4px); left: 0; right: 0;
+  background: #181c28; border: 1px solid rgba(255,255,255,.1);
+  border-radius: 10px; overflow: hidden;
+  z-index: 9999; list-style: none;
+  box-shadow: 0 12px 40px rgba(0,0,0,.6);
+}
+
+.inc-drop-item {
+  display: flex; align-items: flex-start; gap: 8px;
+  padding: 10px 12px; font-size: 12px;
+  color: rgba(255,255,255,.65); cursor: pointer;
+  border-bottom: 1px solid rgba(255,255,255,.04);
+  line-height: 1.4; transition: background .12s;
+}
+.inc-drop-item:last-child { border-bottom: none; }
+.inc-drop-item:hover { background: rgba(255,255,255,.06); color: #fff; }
+
+.inc-myloc-btn {
+  display: flex; align-items: center; gap: 6px;
+  background: rgba(55,138,221,.08);
+  border: 1px solid rgba(55,138,221,.2);
+  border-radius: 7px; padding: 7px 12px;
+  color: #378ADD; font-size: 12px; font-weight: 500;
+  cursor: pointer; font-family: inherit; transition: all .15s;
+  align-self: flex-start;
+}
+.inc-myloc-btn:hover { background: rgba(55,138,221,.15); }
+.inc-myloc-btn:disabled { opacity: .5; cursor: not-allowed; }
+
+.inc-loc-preview {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 11px; color: #3dd68c;
+  background: rgba(61,214,140,.08);
+  border: 1px solid rgba(61,214,140,.2);
+  border-radius: 6px; padding: 5px 10px;
+}
+
+/* Route from→to */
+.inc-field { display: flex; flex-direction: column; gap: 7px; }
+
+.inc-label {
+  font-size: 11px; font-weight: 600;
+  color: rgba(255,255,255,.35);
+  text-transform: uppercase; letter-spacing: .08em;
+}
+
+.inc-route-row {
+  display: flex; align-items: center; gap: 8px;
+}
+
+.inc-route-input-wrap {
+  flex: 1; display: flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 8px; padding: 9px 11px;
+  transition: border-color .2s;
+}
+.inc-route-input-wrap:focus-within { border-color: rgba(255,255,255,.2); }
+
+.inc-route-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.green-dot { background: #3dd68c; }
+.red-dot   { background: #e8614d; }
+
+.inc-route-input {
+  flex: 1; background: transparent; border: none; outline: none;
+  font-size: 13px; color: #e8eaf0; font-family: inherit;
+}
+.inc-route-input::placeholder { color: rgba(255,255,255,.22); }
+
+.inc-route-arrow { color: rgba(255,255,255,.25); flex-shrink: 0; }
+
+/* Type grid */
+.inc-type-grid {
+  display: grid; grid-template-columns: repeat(5,1fr); gap: 7px;
+}
+
+.inc-type-btn {
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+  padding: 10px 6px; border-radius: 9px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  color: rgba(255,255,255,.5); font-size: 11px;
+  cursor: pointer; font-family: inherit; transition: all .15s;
+}
+.inc-type-btn span:first-child { font-size: 18px; }
+.inc-type-btn:hover { background: rgba(255,255,255,.08); color: #fff; }
+.inc-type-active {
+  background: rgba(232,97,77,.12) !important;
+  border-color: rgba(232,97,77,.35) !important;
+  color: #e8614d !important;
+}
+
+/* Severity */
+.inc-sev-row { display: flex; gap: 8px; }
+
+.inc-sev-btn {
+  flex: 1; padding: 9px; border-radius: 8px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  color: rgba(255,255,255,.45); font-size: 13px; font-weight: 500;
+  cursor: pointer; font-family: inherit; transition: all .15s;
+}
+.inc-sev-btn:hover { background: rgba(255,255,255,.08); color: #fff; }
+
+/* Textarea */
+.inc-textarea {
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: 9px; padding: 10px 13px;
+  color: #e8eaf0; font-size: 13px;
+  font-family: inherit; outline: none; resize: vertical;
+  transition: border-color .2s; width: 100%; box-sizing: border-box;
+}
+.inc-textarea:focus { border-color: rgba(232,97,77,.5); }
+.inc-textarea::placeholder { color: rgba(255,255,255,.22); }
+
+/* Submit */
+.inc-submit-btn {
+  width: 100%; padding: 12px;
+  background: linear-gradient(135deg,#e8614d,#c0392b);
+  border: none; border-radius: 9px;
+  color: #fff; font-size: 14px; font-weight: 600;
+  cursor: pointer; font-family: inherit;
+  box-shadow: 0 4px 16px rgba(232,97,77,.3);
+  transition: transform .15s, box-shadow .15s;
+}
+.inc-submit-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 22px rgba(232,97,77,.45); }
+.inc-submit-btn:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+
+/* ── INCIDENT CARDS ── */
+.inc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px,1fr));
+  gap: 14px;
+}
+
+.inc-empty {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 8px; padding: 60px; text-align: center;
+  color: rgba(255,255,255,.35); font-size: 14px;
+  grid-column: 1 / -1;
+}
+
+.inc-card {
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 13px; padding: 15px 16px;
+  display: flex; flex-direction: column; gap: 10px;
+  transition: background .15s, transform .15s;
+  animation: incFadeIn .3s ease;
+}
+@keyframes incFadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+.inc-card:hover { background: rgba(255,255,255,.05); transform: translateY(-1px); }
+
+.inc-card-header { display: flex; align-items: center; justify-content: space-between; }
+
+.inc-card-type { display: flex; align-items: center; gap: 8px; }
+.inc-type-icon { font-size: 18px; }
+.inc-type-label { font-size: 13px; font-weight: 600; color: #e8eaf0; }
+
+.inc-card-badges { display: flex; gap: 6px; flex-wrap: wrap; }
+.inc-badge {
+  font-size: 10px; font-weight: 600;
+  padding: 3px 9px; border-radius: 20px;
+}
+
+.inc-card-route {
+  display: flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: 8px; padding: 8px 11px;
+  font-size: 12px;
+}
+.inc-route-from, .inc-route-to {
+  display: flex; align-items: center; gap: 5px;
+  color: rgba(255,255,255,.6); flex: 1;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.inc-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+
+.inc-card-loc {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 11px; color: rgba(255,255,255,.35);
+}
+
+.inc-card-desc {
+  font-size: 12px; color: rgba(255,255,255,.5);
+  line-height: 1.5; margin: 0;
+}
+
+.inc-card-footer {
+  display: flex; align-items: center;
+  justify-content: space-between;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255,255,255,.06);
+}
+
+.inc-card-date {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 11px; color: rgba(255,255,255,.28);
+}
+
+.inc-police-btn {
+  display: flex; align-items: center; gap: 5px;
+  background: rgba(55,138,221,.1);
+  border: 1px solid rgba(55,138,221,.2);
+  border-radius: 6px; padding: 5px 10px;
+  color: #378ADD; font-size: 11px; font-weight: 600;
+  cursor: pointer; font-family: inherit; transition: all .15s;
+}
+.inc-police-btn:hover { background: rgba(55,138,221,.2); }
+
+/* ── POLICE MODAL ── */
+.police-overlay {
+  position: fixed; inset: 0; z-index: 2000;
+  background: rgba(0,0,0,.75);
+  backdrop-filter: blur(8px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+  animation: incFadeIn .2s ease;
+}
+
+.police-modal {
+  background: #161b27;
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 18px; width: 100%; max-width: 460px;
+  box-shadow: 0 32px 80px rgba(0,0,0,.6);
+  overflow: hidden;
+}
+
+.police-modal-header {
+  display: flex; align-items: center; gap: 14px;
+  padding: 20px; border-bottom: 1px solid rgba(255,255,255,.06);
+}
+
+.police-modal-icon {
+  font-size: 28px; width: 48px; height: 48px;
+  background: rgba(55,138,221,.1); border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+.police-modal-header h3 { font-size: 16px; color: #fff; margin: 0 0 4px; }
+.police-modal-header p  { font-size: 12px; color: rgba(255,255,255,.35); margin: 0; }
+
+.police-close {
+  margin-left: auto; background: transparent; border: none;
+  color: rgba(255,255,255,.35); cursor: pointer; padding: 5px;
+  border-radius: 7px; display: flex; align-items: center;
+}
+.police-close:hover { color: #fff; background: rgba(255,255,255,.08); }
+
+.police-modal-body { padding: 18px; display: flex; flex-direction: column; gap: 14px; }
+
+.police-section { display: flex; flex-direction: column; gap: 8px; }
+
+.police-section-title {
+  font-size: 10px; font-weight: 600;
+  color: rgba(255,255,255,.3);
+  text-transform: uppercase; letter-spacing: .1em;
+  margin-bottom: 4px;
+}
+
+.police-row {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 13px; padding: 6px 0;
+  border-bottom: 1px solid rgba(255,255,255,.05);
+}
+.police-row span { color: rgba(255,255,255,.4); }
+.police-row strong { color: #e8eaf0; }
+
+.police-action {
+  display: flex; align-items: center; gap: 13px;
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 10px; padding: 13px 14px;
+  text-decoration: none; cursor: pointer;
+  transition: background .15s;
+}
+.police-action:hover { background: rgba(255,255,255,.07); }
+
+.police-action-icon { font-size: 22px; flex-shrink: 0; }
+.police-action-title { font-size: 13px; font-weight: 600; color: #e8eaf0; }
+.police-action-sub   { font-size: 11px; color: rgba(255,255,255,.35); margin-top: 2px; }
+
+.police-action-emergency { cursor: default; }
+.police-action-emergency:hover { background: rgba(255,255,255,.03); }
+
+.police-helplines {
+  display: flex; gap: 14px; margin-top: 4px;
+  font-size: 12px; color: rgba(255,255,255,.45);
+}
+.police-helplines strong { color: #e8614d; }
+
+.police-modal-close-btn {
+  width: 100%; padding: 14px;
+  background: rgba(255,255,255,.05);
+  border: none; border-top: 1px solid rgba(255,255,255,.06);
+  color: rgba(255,255,255,.5); font-size: 14px;
+  cursor: pointer; font-family: inherit; transition: background .15s;
+}
+.police-modal-close-btn:hover { background: rgba(255,255,255,.08); color: #fff; }

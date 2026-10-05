@@ -1,0 +1,160 @@
+/* ── Navbar ─────────────────────────────────────────────────────────────── */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 60px;
+  background: rgba(10,12,18,.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,.07);
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  gap: 4px;
+  z-index: 1000;
+}
+
+/* ── Brand ──────────────────────────────────────────────────────────────── */
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  text-decoration: none;
+  flex-shrink: 0;
+  margin-right: 12px;
+}
+
+.nav-logo-img {
+  width: auto;
+  height: 34px;
+  max-width: 110px;
+  border-radius: 6px;
+  object-fit: contain;
+  display: block;
+  flex-shrink: 0;
+}
+
+.nav-brand span {
+  font-size: 17px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -.02em;
+  white-space: nowrap;
+}
+
+/* ── Links ──────────────────────────────────────────────────────────────── */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex: 1;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,255,255,.45);
+  text-decoration: none;
+  transition: all .15s;
+  white-space: nowrap;
+  border: 1px solid transparent;
+}
+
+.nav-link:hover {
+  color: rgba(255,255,255,.85);
+  background: rgba(255,255,255,.06);
+}
+
+.nav-link.active {
+  color: #e8614d;
+  background: rgba(232,97,77,.1);
+  border-color: rgba(232,97,77,.2);
+}
+
+/* SOS pill */
+.nav-link.nav-sos {
+  background: rgba(232,97,77,.1);
+  border-color: rgba(232,97,77,.25);
+  color: #e8614d;
+  border-radius: 20px;
+}
+.nav-link.nav-sos:hover { background: rgba(232,97,77,.18); }
+.nav-link.nav-sos.active {
+  background: linear-gradient(135deg,#e8614d,#c0392b);
+  color: #fff;
+  border-color: transparent;
+}
+
+/* ── Right side ─────────────────────────────────────────────────────────── */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.nav-avatar {
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  background: linear-gradient(135deg,#e8614d,#c0392b);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.nav-name {
+  font-size: 13px;
+  color: rgba(255,255,255,.5);
+  max-width: 90px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.nav-logout {
+  background: transparent;
+  border: none;
+  color: rgba(255,255,255,.35);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  transition: all .15s;
+}
+.nav-logout:hover { color: #e8614d; background: rgba(232,97,77,.1); }
+
+/* ── Global page offset — fixes the overlap on ALL pages ────────────────── */
+/* Add class "page-root" to every page's outermost div                       */
+.page-root {
+  padding-top: 60px;        /* exactly navbar height */
+  min-height: 100vh;
+}
+
+/* ── Mobile (≤ 640px): hide labels, keep icons ──────────────────────────── */
+@media (max-width: 640px) {
+  .navbar { padding: 0 12px; gap: 2px; }
+
+  .nav-brand span { display: none; }
+
+  .nav-link span { display: none; }
+  .nav-link { padding: 8px; border-radius: 8px; }
+
+  .nav-name { display: none; }
+}
+
+/* ── Tablet (641–900px): compact labels ─────────────────────────────────── */
+@media (max-width: 900px) and (min-width: 641px) {
+  .nav-link { padding: 7px 9px; font-size: 12px; }
+  .nav-name { max-width: 70px; }
+}
